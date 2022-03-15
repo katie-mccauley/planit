@@ -9,7 +9,8 @@ export class TasksController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAllTasks)
       .post('', this.createTask)
-    // .put('/:taskId', this.editTask)
+      .put('/:taskId', this.editTask)
+      .delete('/:taskId', this.deleteTask)
   }
 
   async getAllTasks(req, res, next) {
@@ -32,12 +33,26 @@ export class TasksController extends BaseController {
     }
   }
 
-  // async editTask(req, res, next){
-  //   try {
+  async editTask(req, res, next) {
+    try {
+      req.body.creatorId = req.userInfo.id
+      req.body.projectId = req.params.projectId
+      const task = await tasksService.editTask(req.params.taskId, req.body)
+      return res.send(task)
+    } catch (error) {
+      next(error)
+    }
+  }
 
-  //   } catch (error) {
-  //     next(error)
-  //   }
-  // }
+  async deleteTask(req, res, next) {
+    try {
+      const creatorId = req.userInfo.id
+      const taskId = req.params.taskId
+      const message = await tasksService.deleteTask(taskId, creatorId)
+      return res.send(message)
+    } catch (error) {
+      next(error)
+    }
+  }
 
 }
