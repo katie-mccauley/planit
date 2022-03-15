@@ -7,9 +7,9 @@ export class ProjectsController extends BaseController {
   constructor() {
     super('api/projects')
     this.router
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getOne)
-      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/:id/sprints', this.getSprints)
       .post('', this.create)
       .delete('/:id', this.deleteProject)
