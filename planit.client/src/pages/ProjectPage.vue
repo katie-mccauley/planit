@@ -1,5 +1,10 @@
 <template>
   <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <i @click="deleteProject" class="mdi mdi-delete selectable"></i>
+      </div>
+    </div>
     <div class="row">
       <div class="col-2 d-flex justify-content-start">
         <OffCanvas id="showprojects">
@@ -39,13 +44,15 @@
 import { computed, onMounted } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import { sprintsService } from "../services/SprintsService"
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
 import { AppState } from "../AppState"
 import OffCanvas from "../components/OffCanvas.vue"
+import { projectsService } from "../services/ProjectsService"
 export default {
 
   setup() {
     const route = useRoute()
+    const router = useRouter()
     onMounted(async () => {
       try {
         await sprintsService.getAllSprints(route.params.id)
@@ -56,6 +63,14 @@ export default {
     return {
       sprints: computed(() => AppState.sprints),
       projects: computed(() => AppState.projects),
+      async deleteProject() {
+        try {
+          await projectsService.deleteProject(route.params.id)
+          router.push({ name: 'Home' })
+        } catch (error) {
+          logger.error(error)
+        }
+      }
     }
   }
 }
