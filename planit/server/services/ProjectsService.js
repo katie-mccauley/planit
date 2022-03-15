@@ -3,9 +3,9 @@ import { BadRequest } from "../utils/Errors"
 import { logger } from "../utils/Logger"
 class ProjectsService {
 
-  async getAll(query = {}) {
-    const projects = await dbContext.Projects.find(query).populate('creator', 'name')
-    return projects
+  async getAll(userId) {
+    const original = await dbContext.Projects.find({ creatorId: userId }).populate('creator', 'name')
+    return original
   }
 
   async getOne(id) {

@@ -10,7 +10,11 @@
           data-bs-target="#create-task"
           class="mdi mdi-plus selectable"
         ></i>
-        <h2>There is the tasks section</h2>
+        <div class="row">
+          <div class="col" v-for="t in tasks" :key="t.id">
+            <Task :task="t" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -22,7 +26,7 @@
 
 
 <script>
-import { onMounted } from "@vue/runtime-core"
+import { computed, onMounted } from "@vue/runtime-core"
 import { useRoute } from "vue-router"
 import { AppState } from "../AppState"
 import { sprintsService } from "../services/SprintsService"
@@ -53,6 +57,7 @@ export default {
           logger.error(error)
         }
       },
+      tasks: computed(() => AppState.tasks)
     }
   }
 }

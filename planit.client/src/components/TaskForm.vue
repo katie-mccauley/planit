@@ -10,7 +10,7 @@
       p-2
       m-5
     "
-    @submit.prevent="createSprint"
+    @submit.prevent="createTask"
   >
     <h2>Create Task</h2>
     <div class="col-md-4 mb-2">
@@ -59,8 +59,10 @@ export default {
       editable,
       async createTask() {
         try {
+          debugger
           editable.value.projectId = route.params.id
-          await tasksService.createTask(editable.value)
+          editable.value.creatorId =
+            await tasksService.createTask(editable.value,)
           editable.value = {}
         } catch (error) {
           logger.error(error)
