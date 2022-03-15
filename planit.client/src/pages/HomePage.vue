@@ -10,13 +10,26 @@
     "
   >
     <div
-      class="home-card p-5 bg-white rounded elevation-3"
+      class="home-card p-5 bg-white rounded elevation-3 m-3"
       v-for="p in projects"
       :key="p.id"
     >
       <Project :project="p" />
     </div>
   </div>
+  <div
+    class="
+      home
+      flex-grow-1
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
+  ></div>
+  <!-- <div class="home-card p-5 bg-secondary rounded elevation-3 m-3">
+    <h2>Please Log in</h2>
+  </div> -->
 </template>
 
 <script>
@@ -35,7 +48,8 @@ export default {
       }
     })
     return {
-      projects: computed(() => AppState.projects)
+      projects: computed(() => AppState.projects),
+      account: computed(() => AppState.account)
     }
   }
 }
