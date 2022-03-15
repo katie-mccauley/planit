@@ -52,17 +52,23 @@ import { useRoute } from "vue-router"
 import { tasksService } from "../services/TasksService"
 import { logger } from "../utils/Logger"
 export default {
-  setup() {
+  props: {
+    sprintId: {
+      type: Object,
+      required: false,
+    }
+  },
+  setup(props) {
+
     const route = useRoute()
     const editable = ref({})
     return {
       editable,
       async createTask() {
         try {
-          debugger
           editable.value.projectId = route.params.id
-          editable.value.creatorId =
-            await tasksService.createTask(editable.value,)
+          editable.value.sprintId = props.sprintId
+          await tasksService.createTask(editable.value)
           editable.value = {}
         } catch (error) {
           logger.error(error)

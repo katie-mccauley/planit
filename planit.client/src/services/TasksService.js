@@ -11,6 +11,7 @@ class TasksService {
   async createTask(newTask) {
     const res = await api.post('api/projects/' + newTask.projectId + '/tasks', newTask)
     logger.log("creating a task", res.data)
+    AppState.tasks.push(res.data)
   }
 }
 

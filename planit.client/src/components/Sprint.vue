@@ -20,7 +20,7 @@
   </div>
   <Modal id="create-task">
     <template #title> Create Task </template>
-    <template #body><TaskForm /></template>
+    <template #body><TaskForm :sprintId="sprint.id" /></template>
   </Modal>
 </template>
 
@@ -57,7 +57,8 @@ export default {
           logger.error(error)
         }
       },
-      tasks: computed(() => AppState.tasks)
+      tasks: computed(() => AppState.tasks),
+      sprints: computed(() => AppState.sprints)
     }
   }
 }
