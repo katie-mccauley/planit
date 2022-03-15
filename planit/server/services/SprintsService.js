@@ -6,6 +6,10 @@ class SprintsService {
     return sprints
   }
   async create(body) {
+    const sprints = await dbContext.Projects.findById(body.projectId)
+    if (sprints.creatorId.toString() !== body.creatorId) {
+      throw new BadRequest('you can not create a sprint that isnt yours')
+    }
     const sprint = await dbContext.Sprints.create(body)
     await sprint.populate('creator')
     return sprint

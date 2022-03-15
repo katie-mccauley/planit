@@ -1,5 +1,7 @@
 import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
+import { tasksService } from "./TasksService"
+
 
 class NotesService {
 
@@ -9,6 +11,10 @@ class NotesService {
   }
 
   async createNote(body) {
+    const notes = await dbContext.Projects.findById(body.projectId)
+    if (notes.creatorId.toString() !== body.creatorId) {
+      throw new BadRequest('cant create notes')
+    }
     const note = await dbContext.Notes.create(body)
     await note.populate('creator')
     return note

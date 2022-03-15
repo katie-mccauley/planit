@@ -1,5 +1,6 @@
 import { dbContext } from "../db/DbContext"
-import { BadRequest } from "../utils/Errors"
+import { ProjectSchema } from "../models/Project"
+import { BadRequest, Forbidden } from "../utils/Errors"
 
 class TasksService {
   async getAllTasks(id) {
@@ -8,6 +9,10 @@ class TasksService {
   }
 
   async createTask(body) {
+    const tasks = await dbContext.Projects.findById(body.projectId)
+    if (tasks.creatorId.toString() !== body.creatorId) {
+      throw new BadRequest('this is not your task')
+    }
     const task = await dbContext.Tasks.create(body)
     await task.populate('creator')
     return task
@@ -15,6 +20,9 @@ class TasksService {
 
   async editTask(taskId, update) {
     const original = await dbContext.Tasks.findById(taskId)
+    if (original.creatorId.toString() !== update.creatorId) {
+      throw new BadRequest('Cant edit the task')
+    }
     original.name = update.name ? update.name : original.name
     original.weight = update.weight != null ? update.weight : original.weight
     original.sprintId = update.sprintId ? update.sprintId : original.sprintId
