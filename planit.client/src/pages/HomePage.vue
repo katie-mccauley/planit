@@ -50,7 +50,7 @@ export default {
   setup() {
     onMounted(async () => {
       try {
-        await projectsService.getAllProjects()
+        // await projectsService.getAllProjects()
       } catch (error) {
         logger.error(error)
       }

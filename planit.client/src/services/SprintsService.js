@@ -13,6 +13,7 @@ class SprintsService {
   async createSprint(newSprint) {
     const res = await api.post('api/projects/' + newSprint.projectId + '/sprints', newSprint)
     logger.log(res.data)
+    AppState.sprints.push(res.data)
   }
 
 }

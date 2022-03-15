@@ -1,7 +1,18 @@
 <template>
   <div class="container-fluid">
-    <div class="row justify-content-end">
-      <div class="col-2">
+    <div class="row">
+      <div class="col-2 d-flex justify-content-start">
+        <OffCanvas id="showprojects">
+          <template #body>
+            <div class="col" v-for="p in projects" :key="p.id">
+              <router-link :to="{ name: 'Project', params: { id: p.id } }">
+                <h2>{{ p.name }}</h2>
+              </router-link>
+            </div>
+          </template>
+        </OffCanvas>
+      </div>
+      <div class="col-2 d-flex justify-content-end">
         <button
           data-bs-toggle="modal"
           data-bs-target="#create-sprint"
@@ -30,6 +41,7 @@ import { logger } from "../utils/Logger"
 import { sprintsService } from "../services/SprintsService"
 import { useRoute } from "vue-router"
 import { AppState } from "../AppState"
+import OffCanvas from "../components/OffCanvas.vue"
 export default {
 
   setup() {
@@ -42,7 +54,8 @@ export default {
       }
     })
     return {
-      sprints: computed(() => AppState.sprints)
+      sprints: computed(() => AppState.sprints),
+      projects: computed(() => AppState.projects),
     }
   }
 }
