@@ -1,7 +1,9 @@
 <template>
-  <div class="component">
-    <h1>{{ project.name }}</h1>
-  </div>
+  <router-link :to="{ name: 'Project', params: { id: project.id } }">
+    <div class="component">
+      <h1>{{ project.name }}</h1>
+    </div>
+  </router-link>
 </template>
 
 

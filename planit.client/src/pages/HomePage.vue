@@ -1,6 +1,25 @@
 <template>
   <div class="container-fluid">
+    <div v-if="account.id" class="row">
+      <div class="col-2">
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#create-project"
+          class="btn btn-info"
+        >
+          Create Project
+        </button>
+      </div>
+      <div
+        class="col-3 home-card p-5 bg-white rounded elevation-3 m-3"
+        v-for="p in projects"
+        :key="p.id"
+      >
+        <Project :project="p" />
+      </div>
+    </div>
     <div
+      v-if="!account.id"
       class="
         home
         flex-grow-1
@@ -10,28 +29,15 @@
         justify-content-center
       "
     >
-      <div
-        class="home-card p-5 bg-white rounded elevation-3 m-3"
-        v-for="p in projects"
-        :key="p.id"
-      >
-        <Project :project="p" />
+      <div class="home-card p-5 bg-secondary rounded elevation-3 m-3">
+        <h2>Please Log in</h2>
       </div>
     </div>
-    <div
-      class="
-        home
-        flex-grow-1
-        d-flex
-        flex-column
-        align-items-center
-        justify-content-center
-      "
-    ></div>
-    <!-- <div class="home-card p-5 bg-secondary rounded elevation-3 m-3">
-    <h2>Please Log in</h2>
-  </div> -->
   </div>
+  <Modal id="create-project">
+    <template #title> Create Project </template>
+    <template #body><ProjectForm :projectData="projects" /></template>
+  </Modal>
 </template>
 
 <script>
@@ -51,7 +57,14 @@ export default {
     })
     return {
       projects: computed(() => AppState.projects),
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      async createProject() {
+        try {
+
+        } catch (error) {
+          next(error)
+        }
+      }
     }
   }
 }
