@@ -13,6 +13,12 @@ class TasksService {
     logger.log("creating a task", res.data)
     AppState.tasks.push(res.data)
   }
+
+  async deleteTask(projectId, taskId) {
+    const res = await api.delete('api/projects/' + projectId + '/tasks/' + taskId)
+    logger.log(res.data)
+    AppState.tasks = AppState.tasks.filter(t => t.id !== taskId)
+  }
 }
 
 export const tasksService = new TasksService()
