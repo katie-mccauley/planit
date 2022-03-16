@@ -26,7 +26,7 @@ class TasksService {
     original.name = update.name ? update.name : original.name
     original.weight = update.weight != null ? update.weight : original.weight
     original.sprintId = update.sprintId ? update.sprintId : original.sprintId
-    original.isComplete = update.isComplete ? update.isComplete : original.isComplete
+    original.isComplete = update.isComplete != null ? update.isComplete : original.isComplete
 
     await original.save()
     await original.populate('creator')

@@ -3,8 +3,8 @@
     <input
       class="form-check-input"
       type="checkbox"
-      @click="checked"
-      value=""
+      @change="checked"
+      :checked="task.isComplete"
       id="flexCheckDefault"
     />
     <label class="form-check-label" for="flexCheckDefault">

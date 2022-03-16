@@ -29,11 +29,13 @@ class TasksService {
     logger.log('edit task res', res.data)
   }
 
-  async checked(taskId, projectId) {
-    const res = await api.put('api/projects/' + projectId + '/tasks/' + taskId.id, taskId)
+  async checked(task, projectId) {
+    task.isComplete = !task.isComplete
+    const res = await api.put('api/projects/' + projectId + '/tasks/' + task.id, task)
     logger.log("checked box", res.data)
-    taskId.isComplete = !taskId.isComplete
-    logger.log(taskId.isComplete)
+    const foundTask = AppState.tasks.findIndex(t => t.id == task.id)
+    AppState.tasks.splice(foundTask, 1, res.data)
+    // logger.log(task.isComplete)
   }
 }
 
