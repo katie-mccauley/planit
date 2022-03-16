@@ -57,7 +57,7 @@ export default {
           logger.error(error)
         }
       },
-      tasks: computed(() => AppState.tasks),
+      tasks: computed(() => AppState.tasks.filter(t => t.sprintId == props.sprint.id)),
       sprints: computed(() => AppState.sprints)
     }
   }
