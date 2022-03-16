@@ -59,6 +59,7 @@ export default {
       },
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId == props.sprint.id)),
       sprints: computed(() => AppState.sprints),
+      // totalWeight: computed(()=> tasks.weight)
     }
   }
 }

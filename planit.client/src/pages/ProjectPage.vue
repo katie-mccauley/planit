@@ -41,7 +41,7 @@
 
 
 <script>
-import { computed, onMounted } from "@vue/runtime-core"
+import { computed, onMounted, watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import { sprintsService } from "../services/SprintsService"
 import { useRoute, useRouter } from "vue-router"
@@ -53,7 +53,7 @@ export default {
   setup() {
     const route = useRoute()
     const router = useRouter()
-    onMounted(async () => {
+    watchEffect(async () => {
       try {
         await sprintsService.getAllSprints(route.params.id)
       } catch (error) {
