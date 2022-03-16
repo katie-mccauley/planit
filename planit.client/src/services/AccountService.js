@@ -12,10 +12,11 @@ class AccountService {
     }
   }
 
-  // async editAccount(edit) {
-  //   const res = await api.put('/account', edit)
-  //   logger.log(res.data)
-  // }
+  async editAccount(edit) {
+    const res = await api.put('/account', edit)
+    logger.log(res.data)
+    AppState.account = res.data
+  }
 }
 
 export const accountService = new AccountService()

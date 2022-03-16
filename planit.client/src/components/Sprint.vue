@@ -7,7 +7,7 @@
       <div>
         <i
           data-bs-toggle="modal"
-          data-bs-target="#create-task"
+          :data-bs-target="'#create-task' + sprint.id"
           class="mdi mdi-plus selectable"
         ></i>
         <div class="row">
@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-  <Modal id="create-task">
+  <Modal :id="'create-task' + sprint.id">
     <template #title> Create Task </template>
     <template #body><TaskForm :sprintId="sprint.id" /></template>
   </Modal>

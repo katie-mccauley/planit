@@ -74,7 +74,7 @@ export default {
       editable,
       async editAccount() {
         try {
-          debugger
+
           await accountService.editAccount(editable.value)
         } catch (error) {
           logger.error(error)
