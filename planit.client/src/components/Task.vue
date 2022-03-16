@@ -59,13 +59,13 @@ export default {
   },
   setup(props) {
     const route = useRoute()
-    // onMounted(async () => {
-    //   try {
-    //     await notesService.getAllNotes(route.params.id)
-    //   } catch (error) {
-    //     logger.error(error)
-    //   }
-    // })
+    onMounted(async () => {
+      try {
+        await notesService.getAllNotes(route.params.id)
+      } catch (error) {
+        logger.error(error)
+      }
+    })
     return {
       async checked() {
         try {
@@ -81,6 +81,9 @@ export default {
           logger.error(error)
         }
       },
+      // async getTotalTaskWeight(){
+
+      // }
       notes: computed(() => AppState.notes.filter(n => n.taskId == props.task.id))
     }
   }

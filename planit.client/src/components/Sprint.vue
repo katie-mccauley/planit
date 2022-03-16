@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center m-3">
     <div class="col-6 bg-light text-dark">
-      SPRINT NAME
+      <h4>Weight of tasks {{ tasks.weight }}</h4>
       <i @click="deleteSprint" class="selectable mdi mdi-delete"></i>
       <h2>{{ sprint.name }}</h2>
       <div>
@@ -58,7 +58,7 @@ export default {
         }
       },
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId == props.sprint.id)),
-      sprints: computed(() => AppState.sprints)
+      sprints: computed(() => AppState.sprints),
     }
   }
 }
