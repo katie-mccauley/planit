@@ -70,7 +70,7 @@ export default {
           logger.error(error)
         }
       },
-      notes: computed(() => AppState.notes)
+      notes: computed(() => AppState.notes.filter(t => t.taskId == props.task.id))
     }
   }
 }
