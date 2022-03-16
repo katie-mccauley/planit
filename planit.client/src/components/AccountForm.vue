@@ -12,7 +12,7 @@
     "
     @submit.prevent="editAccount"
   >
-    <div class="col-md-4 mb-2">
+    <!-- <div class="col-md-4 mb-2">
       <label for="" class="form-label">Email: </label>
       <input
         v-model="editable.email"
@@ -22,7 +22,7 @@
         aria-describedby="helpId"
         placeholder="Title....."
       />
-    </div>
+    </div> -->
     <div class="col-md-4 mb-2">
       <label for="" class="form-label">Name: </label>
       <input
@@ -59,17 +59,17 @@ import { logger } from "../utils/Logger"
 import { watchEffect } from "@vue/runtime-core"
 export default {
   props: {
-    accountForm: {
+    accountData: {
       type: Object,
       required: false,
     }
   },
   setup(props) {
     const editable = ref({})
-    // watchEffect(() => {
-    //   logger.log("this is the watch effecyt for edit account")
-    //   editable.value = props.accountForm
-    // })
+    watchEffect(() => {
+      logger.log("this is the watch effecyt for edit account")
+      editable.value = props.accountData
+    })
     return {
       editable,
       async editAccount() {

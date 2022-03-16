@@ -10,6 +10,11 @@
       {{ task.name }}
     </label>
     <i class="mdi mdi-delete selectable" @click="deleteTask"></i>
+    <i
+      class="mdi mdi-pencil selectable"
+      data-bs-toggle="modal"
+      data-bs-target="#edit-task"
+    ></i>
   </div>
   <div>Task Weight: {{ task.weight }}</div>
   <div>
@@ -27,6 +32,10 @@
   <Modal id="create-note">
     <template #title> Create Task </template>
     <template #body><NoteForm :note="task.id" /></template>
+  </Modal>
+  <Modal id="edit-task">
+    <template #title> Edit Task </template>
+    <template #body></template>
   </Modal>
 </template>
 

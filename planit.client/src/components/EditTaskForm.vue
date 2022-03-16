@@ -1,0 +1,57 @@
+<template>
+  <form
+    class="
+      bg-grey
+      darken-20
+      justify-content-center
+      elevation-3
+      shadow
+      col-8
+      p-2
+      m-5
+    "
+    @submit.prevent="createTask"
+  >
+    <h2>Create Task</h2>
+    <div class="col-md-4 mb-2">
+      <label for="" class="form-label">Task Name: </label>
+      <input
+        v-model="editable.name"
+        required
+        type="text"
+        class="form-control"
+        aria-describedby="helpId"
+        placeholder="Name....."
+      />
+    </div>
+
+    <div class="col-md-4 mb-2">
+      <label for="" class="form-label">Task Weight: </label>
+      <input
+        v-model="editable.weight"
+        required
+        type="number"
+        class="form-control"
+        aria-describedby="helpId"
+        placeholder="Task Weight....."
+      />
+    </div>
+
+    <div class="col-12 d-flex justify-content-end">
+      <button data-bs-dismiss="modal" class="btn btn-primary">edit task</button>
+    </div>
+  </form>
+</template>
+
+
+<script>
+export default {
+  setup() {
+    return {}
+  }
+}
+</script>
+
+
+<style lang="scss" scoped>
+</style>
