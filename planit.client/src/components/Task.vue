@@ -11,16 +11,34 @@
     </label>
     <i class="mdi mdi-delete selectable" @click="deleteTask"></i>
   </div>
+  <div>Task Weight: {{ task.weight }}</div>
   <div>
-    {{ task.weight }}
+    <i
+      data-bs-toggle="modal"
+      data-bs-target="#create-note"
+      class="mdi mdi-message"
+    ></i>
   </div>
+  <div class="row">
+    <div class="col" v-for="n in notes" :key="n.id">
+      <Notes :note="n" />
+    </div>
+  </div>
+  <Modal id="create-note">
+    <template #title> Create Task </template>
+    <template #body><NoteForm :note="task.id" /></template>
+  </Modal>
 </template>
 
 
 <script>
+import { computed } from "@vue/reactivity"
 import { useRoute } from "vue-router"
 import { tasksService } from "../services/TasksService"
 import { logger } from "../utils/Logger"
+import { AppState } from "../AppState"
+import { onMounted } from "@vue/runtime-core"
+import { notesService } from "../services/NotesService"
 export default {
   props: {
     task: {
@@ -30,6 +48,13 @@ export default {
   },
   setup(props) {
     const route = useRoute()
+    onMounted(async () => {
+      try {
+        await notesService.getAllNotes(route.params.id)
+      } catch (error) {
+        logger.error(error)
+      }
+    })
     return {
       // async checked() {
       //   try {
@@ -44,7 +69,8 @@ export default {
         } catch (error) {
           logger.error(error)
         }
-      }
+      },
+      notes: computed(() => AppState.notes)
     }
   }
 }
