@@ -23,6 +23,18 @@ class TasksService {
   // async editTask(editTask){
   //   const res = await api.put('api/projects' + editTask.projectId + '/tasks/' + )
   // }
+
+  async moveTask(editedTask) {
+    const res = await api.put('api/projects/' + editedTask.projectId + '/tasks/' + editedTask.id, editedTask)
+    logger.log('edit task res', res.data)
+  }
+
+  async checked(taskId, projectId) {
+    const res = await api.put('api/projects/' + projectId + '/tasks/' + taskId.id, taskId)
+    logger.log("checked box", res.data)
+    taskId.isComplete = !taskId.isComplete
+    logger.log(taskId.isComplete)
+  }
 }
 
 export const tasksService = new TasksService()

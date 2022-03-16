@@ -3,6 +3,7 @@
     <input
       class="form-check-input"
       type="checkbox"
+      @click="checked"
       value=""
       id="flexCheckDefault"
     />
@@ -13,8 +14,13 @@
     <i
       class="mdi mdi-pencil selectable"
       data-bs-toggle="modal"
-      data-bs-target="#edit-task"
+      :data-bs-target="'#edit-task' + task.id"
     ></i>
+    <div class="row">
+      <div class="col" v-for="n in notes" :key="n.id">
+        <Notes :note="n" />
+      </div>
+    </div>
   </div>
   <div>Task Weight: {{ task.weight }}</div>
   <div>
@@ -24,18 +30,14 @@
       class="mdi mdi-message"
     ></i>
   </div>
-  <div class="row">
-    <div class="col" v-for="n in notes" :key="n.id">
-      <Notes :note="n" />
-    </div>
-  </div>
+
   <Modal id="create-note">
     <template #title> Create Task </template>
     <template #body><NoteForm :note="task.id" /></template>
   </Modal>
-  <Modal id="edit-task">
+  <Modal :id="'edit-task' + task.id">
     <template #title> Edit Task </template>
-    <template #body><EditTaskForm :editTask="task.id" /></template>
+    <template #body><EditTaskForm :editTask="task" /></template>
   </Modal>
 </template>
 
@@ -65,13 +67,13 @@ export default {
     //   }
     // })
     return {
-      // async checked() {
-      //   try {
-      //     props.task.isComplete = !props.task.isComplete
-      //   } catch (error) {
-      //     logger.error(error)
-      //   }
-      // }
+      async checked() {
+        try {
+          await tasksService.checked(props.task, route.params.id)
+        } catch (error) {
+          logger.error(error)
+        }
+      },
       async deleteTask() {
         try {
           await tasksService.deleteTask(route.params.id, props.task.id)
