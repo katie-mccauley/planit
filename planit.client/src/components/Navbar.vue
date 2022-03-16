@@ -62,11 +62,15 @@
             class="dropdown-menu p-0 list-group w-100"
             aria-labelledby="authDropdown"
           >
-            <router-link :to="{ name: 'Account' }">
-              <div class="list-group-item list-group-item-action hoverable">
-                Manage Account
-              </div>
-            </router-link>
+            <!-- <router-link :to="{ name: 'Account' }"> -->
+            <div
+              data-bs-toggle="modal"
+              data-bs-target="#edit-account"
+              class="list-group-item list-group-item-action hoverable"
+            >
+              Manage Account
+            </div>
+            <!-- </router-link> -->
             <div
               class="
                 list-group-item list-group-item-action
@@ -82,6 +86,10 @@
         </div>
       </span>
     </div>
+    <Modal id="edit-account">
+      <template #title> Edit Account </template>
+      <template #body><AccountForm :accountData="account" /></template>
+    </Modal>
   </nav>
 </template>
 
@@ -98,7 +106,8 @@ export default {
       },
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })
-      }
+      },
+      account: computed(() => AppState.account)
     }
   }
 }
