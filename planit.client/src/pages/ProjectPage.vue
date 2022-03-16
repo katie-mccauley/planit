@@ -55,7 +55,10 @@ export default {
     const router = useRouter()
     watchEffect(async () => {
       try {
-        await sprintsService.getAllSprints(route.params.id)
+        if (route.params.id) {
+          await sprintsService.getAllSprints(route.params.id)
+        }
+
       } catch (error) {
         logger.error(error)
       }
