@@ -12,7 +12,7 @@
     "
     @submit.prevent="createNote"
   >
-    <h2>Create Sprint</h2>
+    <h2>Create Note</h2>
     <div class="col-md-4 mb-2">
       <label for="" class="form-label">Body: </label>
       <input

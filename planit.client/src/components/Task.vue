@@ -26,12 +26,12 @@
   <div>
     <i
       data-bs-toggle="modal"
-      data-bs-target="#create-note"
+      :data-bs-target="'#create-note' + task.id"
       class="mdi mdi-message"
     ></i>
   </div>
 
-  <Modal id="create-note">
+  <Modal :id="'create-note' + task.id">
     <template #title> Create Task </template>
     <template #body><NoteForm :note="task.id" /></template>
   </Modal>
