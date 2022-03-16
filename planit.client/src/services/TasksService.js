@@ -19,6 +19,10 @@ class TasksService {
     logger.log(res.data)
     AppState.tasks = AppState.tasks.filter(t => t.id !== taskId)
   }
+
+  // async editTask(editTask){
+  //   const res = await api.put('api/projects' + editTask.projectId + '/tasks/' + )
+  // }
 }
 
 export const tasksService = new TasksService()

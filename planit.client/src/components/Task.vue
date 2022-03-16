@@ -35,7 +35,7 @@
   </Modal>
   <Modal id="edit-task">
     <template #title> Edit Task </template>
-    <template #body></template>
+    <template #body><EditTaskForm :editTask="task.id" /></template>
   </Modal>
 </template>
 
