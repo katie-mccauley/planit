@@ -23,6 +23,7 @@ import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { notesService } from "../services/NotesService"
 import { useRoute } from "vue-router"
+import Pop from "../utils/Pop"
 export default {
   props: {
     note: {
@@ -36,7 +37,10 @@ export default {
       account: computed(() => AppState.account),
       async deleteNote() {
         try {
-          await notesService.deleteNote(route.params.id, props.note.id)
+          if (await Pop.confirm()) {
+            await notesService.deleteNote(route.params.id, props.note.id)
+          }
+
         } catch (error) {
           logger.error(error)
         }

@@ -6,6 +6,7 @@
       @change="checked"
       :checked="task.isComplete"
       id="flexCheckDefault"
+      title="check task"
     />
     <label class="form-check-label" for="flexCheckDefault">
       {{ task.name }}
@@ -56,6 +57,7 @@ import { logger } from "../utils/Logger"
 import { AppState } from "../AppState"
 import { onMounted } from "@vue/runtime-core"
 import { notesService } from "../services/NotesService"
+import Pop from "../utils/Pop"
 export default {
   props: {
     task: {
@@ -82,7 +84,10 @@ export default {
       },
       async deleteTask() {
         try {
-          await tasksService.deleteTask(route.params.id, props.task.id)
+          if (await Pop.confirm()) {
+            await tasksService.deleteTask(route.params.id, props.task.id)
+          }
+
         } catch (error) {
           logger.error(error)
         }

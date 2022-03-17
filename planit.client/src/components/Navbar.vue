@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <h1>PlanIt</h1>
+        <h1 class="text-dark">PlanIt</h1>
       </div>
     </router-link>
     <button
@@ -17,7 +17,7 @@
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
+      <!-- <ul class="navbar-nav me-auto">
         <li>
           <router-link
             :to="{ name: 'About' }"
@@ -26,7 +26,7 @@
             About
           </router-link>
         </li>
-      </ul>
+      </ul> -->
       <span class="navbar-text">
         <button
           class="
@@ -56,7 +56,7 @@
               height="40"
               class="rounded"
             />
-            <span class="mx-3 text-success lighten-30">{{ account.name }}</span>
+            <span class="mx-3 text-bold text-dark">{{ account.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"

@@ -1,7 +1,7 @@
 <template>
-  <div class="row justify-content-center m-3">
-    <div class="col-6 bg-light text-dark">
-      <div class="row justify-content-center">
+  <div class="row justify-content-end m-3">
+    <div class="col-md-7 bg-light text-dark">
+      <div class="row">
         <div class="col-6">
           <h4>
             {{ sprint.name }} <i class="mdi mdi-weight"></i>{{ totalWeight }}
@@ -49,6 +49,7 @@ import { AppState } from "../AppState"
 import { sprintsService } from "../services/SprintsService"
 import { logger } from "../utils/Logger"
 import { tasksService } from "../services/TasksService"
+import Pop from "../utils/Pop"
 export default {
   props: {
     sprint: {
@@ -69,7 +70,10 @@ export default {
     return {
       async deleteSprint() {
         try {
-          await sprintsService.deleteSprint(route.params.id, props.sprint.id)
+          if (await Pop.confirm()) {
+            await sprintsService.deleteSprint(route.params.id, props.sprint.id)
+          }
+
         } catch (error) {
           logger.error(error)
         }

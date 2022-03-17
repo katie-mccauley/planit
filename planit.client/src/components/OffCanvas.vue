@@ -25,14 +25,14 @@
       ></button>
     </div>
     <div class="offcanvas-body">
-      <div>Name of Projects</div>
+      <div><h1>Name of Projects</h1></div>
       <div class="dropdown mt-3">
         <slot name="body"><!--title slot--></slot>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </div>

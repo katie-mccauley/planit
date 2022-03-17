@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
-    <div v-if="account.id" class="row justify-content-center">
-      <div class="col-3 mt-2">
+    <div v-if="account.id" class="row justify-content-center ms-5">
+      <div class="col-9 mt-2 d-flex justify-content-end">
         <button
           data-bs-toggle="modal"
           data-bs-target="#create-project"

@@ -13,8 +13,8 @@
         </OffCanvas>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-6 mb-3">
+    <div class="row justify-content-end">
+      <div class="col-7 mb-3">
         <h3>
           {{ activeProject.name }}
           <i
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-7 d-flex justify-content-end">
+      <div class="col-9 d-flex justify-content-end">
         <button
           data-bs-toggle="modal"
           data-bs-target="#create-sprint"
@@ -59,6 +59,7 @@ import { useRoute, useRouter } from "vue-router"
 import { AppState } from "../AppState"
 import OffCanvas from "../components/OffCanvas.vue"
 import { projectsService } from "../services/ProjectsService"
+import Pop from "../utils/Pop"
 export default {
 
   setup() {
@@ -80,8 +81,11 @@ export default {
       projects: computed(() => AppState.projects),
       async deleteProject() {
         try {
-          await projectsService.deleteProject(route.params.id)
-          router.push({ name: 'Home' })
+          if (await Pop.confirm()) {
+            await projectsService.deleteProject(route.params.id)
+            router.push({ name: 'Home' })
+          }
+
         } catch (error) {
           logger.error(error)
         }

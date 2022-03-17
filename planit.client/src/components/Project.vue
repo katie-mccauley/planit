@@ -1,7 +1,7 @@
 <template>
   <router-link :to="{ name: 'Project', params: { id: project.id } }">
     <div class="">
-      <h1>{{ project.name }}</h1>
+      <h1 class="text-dark">{{ project.name }}</h1>
     </div>
   </router-link>
 </template>
