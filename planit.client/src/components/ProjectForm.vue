@@ -37,7 +37,7 @@
     </div>
 
     <div class="col-12 d-flex justify-content-end">
-      <button data-bs-dismiss="modal" class="btn btn-primary">create</button>
+      <button class="btn btn-primary">create</button>
     </div>
   </form>
 </template>
@@ -49,6 +49,7 @@ import { useRouter } from "vue-router";
 import { logger } from "../utils/Logger";
 import { projectsService } from "../services/ProjectsService";
 import { watchEffect } from "@vue/runtime-core";
+import { Modal } from "bootstrap";
 export default {
   props: {
     projectData: {
@@ -65,6 +66,7 @@ export default {
       state,
       async createProject() {
         try {
+          Modal.getOrCreateInstance(document.getElementById('create-project')).hide()
           let id = await projectsService.createProject(state.editable)
           state.editable = {}
           router.push({ name: 'Project', params: { id } })

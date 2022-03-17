@@ -38,9 +38,7 @@
     </div>
 
     <div class="col-12 d-flex justify-content-end">
-      <button data-bs-dismiss="modal" class="btn btn-primary">
-        create task
-      </button>
+      <button class="btn btn-primary">create task</button>
     </div>
   </form>
 </template>
@@ -51,6 +49,7 @@ import { ref } from "@vue/reactivity"
 import { useRoute } from "vue-router"
 import { tasksService } from "../services/TasksService"
 import { logger } from "../utils/Logger"
+import { Modal } from "bootstrap"
 export default {
   props: {
     sprintId: {
@@ -68,6 +67,7 @@ export default {
         try {
           editable.value.projectId = route.params.id
           editable.value.sprintId = props.sprintId
+          Modal.getOrCreateInstance(document.getElementById('create-task' + props.sprintId)).hide()
           await tasksService.createTask(editable.value)
           editable.value = {}
         } catch (error) {

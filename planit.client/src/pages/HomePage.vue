@@ -6,6 +6,7 @@
           data-bs-toggle="modal"
           data-bs-target="#create-project"
           class="btn btn-secondary"
+          title="Create Project"
         >
           <h4>Create Project</h4>
         </button>

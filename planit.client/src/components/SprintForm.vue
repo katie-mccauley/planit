@@ -26,7 +26,7 @@
     </div>
 
     <div class="col-12 d-flex justify-content-end">
-      <button data-bs-dismiss="modal" class="btn btn-primary">create</button>
+      <button class="btn btn-primary">create</button>
     </div>
   </form>
 </template>
@@ -37,6 +37,7 @@ import { reactive, ref } from "@vue/reactivity";
 import { sprintsService } from "../services/SprintsService";
 import { logger } from "../utils/Logger";
 import { useRoute } from "vue-router";
+import { Modal } from "bootstrap";
 export default {
   setup() {
     const route = useRoute()
@@ -46,7 +47,7 @@ export default {
       async createSprint() {
         try {
           editable.value.projectId = route.params.id
-
+          Modal.getOrCreateInstance(document.getElementById('create-sprint')).hide()
           await sprintsService.createSprint(editable.value)
           editable.value = {}
         } catch (error) {

@@ -26,7 +26,7 @@
     </div>
 
     <div class="col-12 d-flex justify-content-end">
-      <button data-bs-dismiss="modal" class="btn btn-primary">create</button>
+      <button class="btn btn-primary">create</button>
     </div>
   </form>
 </template>
@@ -37,9 +37,10 @@ import { ref } from "@vue/reactivity"
 import { useRoute } from "vue-router"
 import { logger } from "../utils/Logger"
 import { notesService } from "../services/NotesService"
+import { Modal } from "bootstrap"
 export default {
   props: {
-    note: {
+    taskData: {
       type: Object,
       required: true
     }
@@ -52,7 +53,9 @@ export default {
       async createNote() {
         try {
           editable.value.projectId = route.params.id
-          editable.value.taskId = props.note
+          editable.value.taskId = props.taskData.id
+          Modal.getOrCreateInstance(document.getElementById('create-note' + props.taskData.id)).hide()
+
           await notesService.createNote(editable.value)
         } catch (error) {
           logger.error(error)

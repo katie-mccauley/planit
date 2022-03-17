@@ -1,7 +1,7 @@
 <template>
   <div class="form-check">
     <input
-      class="form-check-input"
+      class="form-check-input selectable"
       type="checkbox"
       @change="checked"
       :checked="task.isComplete"
@@ -26,7 +26,7 @@
         title="Create Note"
         data-bs-toggle="modal"
         :data-bs-target="'#create-note' + task.id"
-        class="mdi mdi-message"
+        class="mdi mdi-message selectable"
       ></i>
     </div>
     <div class="row">
@@ -39,7 +39,7 @@
 
   <Modal :id="'create-note' + task.id">
     <template #title> Create Task </template>
-    <template #body><NoteForm :note="task.id" /></template>
+    <template #body><NoteForm :taskData="task" /></template>
   </Modal>
   <Modal :id="'edit-task' + task.id">
     <template #title> Edit Task </template>
