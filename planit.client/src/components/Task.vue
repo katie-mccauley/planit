@@ -1,5 +1,5 @@
 <template>
-  <div class="form-check">
+  <div class="form-check mt-3">
     <input
       class="form-check-input selectable"
       type="checkbox"
@@ -9,7 +9,7 @@
       title="check task"
     />
     <label class="form-check-label" for="flexCheckDefault">
-      {{ task.name }}
+      <h4>{{ task.name }}</h4>
     </label>
     <i
       class="mdi mdi-delete selectable"

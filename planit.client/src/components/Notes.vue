@@ -6,14 +6,14 @@
     </div>
   </div>
 
-  <p>
+  <h6>
     {{ note.body }}
     <i
       class="mdi mdi-delete selectable"
       title="Delete Note"
       @click="deleteNote"
     ></i>
-  </p>
+  </h6>
 </template>
 
 

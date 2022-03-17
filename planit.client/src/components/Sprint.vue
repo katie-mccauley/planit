@@ -18,7 +18,7 @@
         </div>
       </div>
       <div>
-        <p>
+        <h5>
           Create Task
           <i
             data-bs-toggle="modal"
@@ -26,9 +26,9 @@
             :data-bs-target="'#create-task' + sprint.id"
             class="mdi mdi-plus selectable"
           ></i>
-        </p>
+        </h5>
         <div class="row">
-          <div class="col" v-for="t in tasks" :key="t.id">
+          <div class="col-12" v-for="t in tasks" :key="t.id">
             <Task :task="t" />
           </div>
         </div>
