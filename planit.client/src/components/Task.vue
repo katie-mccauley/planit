@@ -10,14 +10,20 @@
     <label class="form-check-label" for="flexCheckDefault">
       {{ task.name }}
     </label>
-    <i class="mdi mdi-delete selectable" @click="deleteTask"></i>
     <i
+      class="mdi mdi-delete selectable"
+      title="Delete Task"
+      @click="deleteTask"
+    ></i>
+    <i
+      title="Edit Task"
       class="mdi mdi-pencil selectable"
       data-bs-toggle="modal"
       :data-bs-target="'#edit-task' + task.id"
     ></i>
     <div>
       <i
+        title="Create Note"
         data-bs-toggle="modal"
         :data-bs-target="'#create-note' + task.id"
         class="mdi mdi-message"

@@ -8,7 +8,11 @@
 
   <p>
     {{ note.body }}
-    <i class="mdi mdi-delete selectable" @click="deleteNote"></i>
+    <i
+      class="mdi mdi-delete selectable"
+      title="Delete Note"
+      @click="deleteNote"
+    ></i>
   </p>
 </template>
 

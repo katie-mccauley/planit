@@ -17,7 +17,11 @@
       <div class="col-6 mb-3">
         <h3>
           {{ activeProject.name }}
-          <i @click="deleteProject" class="mdi mdi-delete selectable"></i>
+          <i
+            @click="deleteProject"
+            title="Delete Project"
+            class="mdi mdi-delete selectable"
+          ></i>
         </h3>
         <h5>{{ activeProject.description }}</h5>
       </div>
@@ -27,6 +31,7 @@
         <button
           data-bs-toggle="modal"
           data-bs-target="#create-sprint"
+          title="Create Sprint"
           class="btn btn-success"
         >
           Create Sprint

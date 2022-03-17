@@ -9,7 +9,11 @@
         </div>
         <div class="col-6 d-flex justify-content-end">
           <h3>
-            <i @click="deleteSprint" class="selectable mdi mdi-alpha-x"></i>
+            <i
+              @click="deleteSprint"
+              title="Delete Sprint"
+              class="selectable mdi mdi-alpha-x"
+            ></i>
           </h3>
         </div>
       </div>
@@ -18,6 +22,7 @@
           Create Task
           <i
             data-bs-toggle="modal"
+            title="Create Task"
             :data-bs-target="'#create-task' + sprint.id"
             class="mdi mdi-plus selectable"
           ></i>
