@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center m-3">
     <div class="col-6 bg-light text-dark">
-      <h4>Weight of tasks {{ tasks.weight }}</h4>
+      <h4>Weight of tasks {{ totalWeight }}</h4>
       <i @click="deleteSprint" class="selectable mdi mdi-delete"></i>
       <h2>{{ sprint.name }}</h2>
       <div>
@@ -59,7 +59,12 @@ export default {
       },
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId == props.sprint.id)),
       sprints: computed(() => AppState.sprints),
-      // totalWeight: computed(()=> tasks.weight)
+      totalWeight: computed(() => {
+        let totalTask = AppState.tasks.filter(t => t.sprintId == props.sprint.id)
+        let total = 0
+        totalTask.forEach(t => total += t.weight)
+        return total
+      })
     }
   }
 }
