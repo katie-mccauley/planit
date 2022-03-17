@@ -31,7 +31,7 @@
       ></i>
     </div>
     <div class="row">
-      <div class="col" v-for="n in notes" :key="n.id">
+      <div class="col-12" v-for="n in notes" :key="n.id">
         <Notes :note="n" />
       </div>
     </div>
