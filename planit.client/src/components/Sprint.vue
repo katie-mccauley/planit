@@ -1,15 +1,27 @@
 <template>
   <div class="row justify-content-center m-3">
     <div class="col-6 bg-light text-dark">
-      <h4>Weight of tasks {{ totalWeight }}</h4>
-      <i @click="deleteSprint" class="selectable mdi mdi-delete"></i>
-      <h2>{{ sprint.name }}</h2>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <h4>
+            {{ sprint.name }} <i class="mdi mdi-weight"></i>{{ totalWeight }}
+          </h4>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+          <h3>
+            <i @click="deleteSprint" class="selectable mdi mdi-alpha-x"></i>
+          </h3>
+        </div>
+      </div>
       <div>
-        <i
-          data-bs-toggle="modal"
-          :data-bs-target="'#create-task' + sprint.id"
-          class="mdi mdi-plus selectable"
-        ></i>
+        <p>
+          Create Task
+          <i
+            data-bs-toggle="modal"
+            :data-bs-target="'#create-task' + sprint.id"
+            class="mdi mdi-plus selectable"
+          ></i>
+        </p>
         <div class="row">
           <div class="col" v-for="t in tasks" :key="t.id">
             <Task :task="t" />

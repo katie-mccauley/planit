@@ -1,8 +1,15 @@
 <template>
-  <h4>{{ note.creator.name }}</h4>
-  <img class="img-fluid" :src="note.creator.picture" alt="" />
-  <h4>{{ note.body }}</h4>
-  <i class="mdi mdi-delete selectable" @click="deleteNote"></i>
+  <div class="row">
+    <div class="col-12">
+      <img class="img-fluid cropped" :src="note.creator.picture" alt="" />
+      <h4>{{ note.creator.name }}</h4>
+    </div>
+  </div>
+
+  <p>
+    {{ note.body }}
+    <i class="mdi mdi-delete selectable" @click="deleteNote"></i>
+  </p>
 </template>
 
 
@@ -37,4 +44,9 @@ export default {
 
 
 <style lang="scss" scoped>
+.cropped {
+  height: 50px;
+  max-width: 50px;
+  border-radius: 5%;
+}
 </style>

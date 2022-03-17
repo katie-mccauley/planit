@@ -1,10 +1,5 @@
 <template>
   <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-6">
-        <i @click="deleteProject" class="mdi mdi-delete selectable"></i>
-      </div>
-    </div>
     <div class="row">
       <div class="col-2 d-flex justify-content-start">
         <OffCanvas id="showprojects">
@@ -17,7 +12,18 @@
           </template>
         </OffCanvas>
       </div>
-      <div class="col-2 d-flex justify-content-end">
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6 mb-3">
+        <h3>
+          {{ activeProject.name }}
+          <i @click="deleteProject" class="mdi mdi-delete selectable"></i>
+        </h3>
+        <h5>{{ activeProject.description }}</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-7 d-flex justify-content-end">
         <button
           data-bs-toggle="modal"
           data-bs-target="#create-sprint"
@@ -55,8 +61,9 @@ export default {
     const router = useRouter()
     watchEffect(async () => {
       try {
-        if (route.params.id) {
+        if (route.name == "Project") {
           await sprintsService.getAllSprints(route.params.id)
+          await projectsService.getProjectById(route.params.id)
         }
 
       } catch (error) {
@@ -73,7 +80,8 @@ export default {
         } catch (error) {
           logger.error(error)
         }
-      }
+      },
+      activeProject: computed(() => AppState.activeProject)
     }
   }
 }

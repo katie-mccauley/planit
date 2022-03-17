@@ -16,20 +16,20 @@
       data-bs-toggle="modal"
       :data-bs-target="'#edit-task' + task.id"
     ></i>
+    <div>
+      <i
+        data-bs-toggle="modal"
+        :data-bs-target="'#create-note' + task.id"
+        class="mdi mdi-message"
+      ></i>
+    </div>
     <div class="row">
       <div class="col" v-for="n in notes" :key="n.id">
         <Notes :note="n" />
       </div>
     </div>
   </div>
-  <div>Task Weight: {{ task.weight }}</div>
-  <div>
-    <i
-      data-bs-toggle="modal"
-      :data-bs-target="'#create-note' + task.id"
-      class="mdi mdi-message"
-    ></i>
-  </div>
+  <div><i class="mdi mdi-weight"></i> {{ task.weight }}</div>
 
   <Modal :id="'create-note' + task.id">
     <template #title> Create Task </template>

@@ -1,17 +1,18 @@
 <template>
   <div class="container-fluid">
-    <div v-if="account.id" class="row">
-      <div class="col-2">
+    <div v-if="account.id" class="row justify-content-center">
+      <div class="col-3 mt-2">
         <button
           data-bs-toggle="modal"
           data-bs-target="#create-project"
-          class="btn btn-info"
+          class="btn btn-secondary"
         >
-          Create Project
+          <h4>Create Project</h4>
         </button>
       </div>
+
       <div
-        class="col-3 home-card p-5 bg-white rounded elevation-3 m-3"
+        class="col-9 m-3 home-card p-5 bg-light rounded elevation-3"
         v-for="p in projects"
         :key="p.id"
       >
@@ -46,6 +47,7 @@ import { logger } from "../utils/Logger"
 import { projectsService } from "../services/ProjectsService"
 import { AppState } from "../AppState"
 export default {
+
   name: 'Home',
   setup() {
     onMounted(async () => {
