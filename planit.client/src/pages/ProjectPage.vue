@@ -13,8 +13,8 @@
         </OffCanvas>
       </div>
     </div>
-    <div class="row justify-content-end">
-      <div class="col-7 mb-3">
+    <div class="row justify-content-end mt-2">
+      <div class="col-md-6 mb-3">
         <h3>
           {{ activeProject.name }}
           <i

@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <h1 class="text-dark">PlanIt</h1>
+        <h1 class="text-dark"><i class="mdi mdi-rocket"></i> PlanIt</h1>
       </div>
     </router-link>
     <button

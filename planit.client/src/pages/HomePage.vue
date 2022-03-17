@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div v-if="account.id" class="row justify-content-center ms-5">
+    <div v-if="account.id" class="row justify-content-center m-2">
       <div class="col-9 mt-2 d-flex justify-content-end">
         <button
           data-bs-toggle="modal"
@@ -13,7 +13,7 @@
       </div>
 
       <div
-        class="col-9 m-3 home-card p-5 bg-light rounded elevation-3"
+        class="col-md-9 m-3 home-card p-5 bg-light rounded elevation-3"
         v-for="p in projects"
         :key="p.id"
       >
