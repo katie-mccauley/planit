@@ -8,7 +8,7 @@
           </h4>
         </div>
         <div class="col-6 d-flex justify-content-end">
-          <h3>
+          <h3 v-if="account.id == sprint.creatorId">
             <i
               @click="deleteSprint"
               title="Delete Sprint"
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div>
-        <h5>
+        <h5 v-if="account.id == sprint.creatorId">
           Create Task
           <i
             data-bs-toggle="modal"
@@ -80,6 +80,7 @@ export default {
       },
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId == props.sprint.id)),
       sprints: computed(() => AppState.sprints),
+      account: computed(() => AppState.account),
       totalWeight: computed(() => {
         let totalTask = AppState.tasks.filter(t => t.sprintId == props.sprint.id)
         let total = 0

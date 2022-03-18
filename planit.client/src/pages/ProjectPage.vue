@@ -18,6 +18,7 @@
         <h3>
           {{ activeProject.name }}
           <i
+            v-if="account.id == activeProject.creatorId"
             @click="deleteProject"
             title="Delete Project"
             class="mdi mdi-delete selectable"
@@ -29,6 +30,7 @@
     <div class="row">
       <div class="col-9 d-flex justify-content-end">
         <button
+          v-if="account.id == activeProject.creatorId"
           data-bs-toggle="modal"
           data-bs-target="#create-sprint"
           title="Create Sprint"
@@ -90,7 +92,8 @@ export default {
           logger.error(error)
         }
       },
-      activeProject: computed(() => AppState.activeProject)
+      activeProject: computed(() => AppState.activeProject),
+      account: computed(() => AppState.account)
     }
   }
 }

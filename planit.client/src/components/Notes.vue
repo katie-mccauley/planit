@@ -9,6 +9,7 @@
   <h6>
     {{ note.body }}
     <i
+      v-if="account.id == note.creatorId"
       class="mdi mdi-delete selectable"
       title="Delete Note"
       @click="deleteNote"

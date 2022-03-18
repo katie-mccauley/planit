@@ -12,11 +12,13 @@
       <h4>{{ task.name }}</h4>
     </label>
     <i
+      v-if="account.id == task.creatorId"
       class="mdi mdi-delete selectable"
       title="Delete Task"
       @click="deleteTask"
     ></i>
     <i
+      v-if="account.id == task.creatorId"
       title="Edit Task"
       class="mdi mdi-pencil selectable"
       data-bs-toggle="modal"
@@ -95,7 +97,8 @@ export default {
       // async getTotalTaskWeight(){
 
       // }
-      notes: computed(() => AppState.notes.filter(n => n.taskId == props.task.id))
+      notes: computed(() => AppState.notes.filter(n => n.taskId == props.task.id)),
+      account: computed(() => AppState.account)
     }
   }
 }

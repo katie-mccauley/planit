@@ -8,6 +8,8 @@
 
 
 <script>
+import { computed } from "@vue/reactivity"
+import { AppState } from "../AppState"
 export default {
   props: {
     project: {
@@ -17,7 +19,9 @@ export default {
     }
   },
   setup() {
-    return {}
+    return {
+      account: computed(() => AppState.account),
+    }
   }
 }
 </script>
