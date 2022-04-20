@@ -1,20 +1,23 @@
 <template>
-  <div class="row">
-    <div class="col-12">
+  <div class="row text-dark">
+    <div class="col-md-1 col-12">
       <img class="img-fluid cropped" :src="note.creator.picture" alt="" />
-      <h4>{{ note.creator.name }}</h4>
+    </div>
+    <div class="col-md-2 col-5 d-flex align-items-end">
+      <h6>{{ note.creator.name }}:</h6>
+    </div>
+    <div class="col-md-6 col-7 d-flex align-items-end">
+      <h6>
+        {{ note.body }}
+        <i
+          v-if="account.id == note.creatorId"
+          class="mdi mdi-delete selectable"
+          title="Delete Note"
+          @click="deleteNote"
+        ></i>
+      </h6>
     </div>
   </div>
-
-  <h6>
-    {{ note.body }}
-    <i
-      v-if="account.id == note.creatorId"
-      class="mdi mdi-delete selectable"
-      title="Delete Note"
-      @click="deleteNote"
-    ></i>
-  </h6>
 </template>
 
 

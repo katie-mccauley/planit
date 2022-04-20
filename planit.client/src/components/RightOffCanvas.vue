@@ -1,16 +1,4 @@
 <template>
-  <h4>
-    <i
-      class="mdi mdi-message-bulleted selectable"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasRight"
-      aria-controls="offcanvasRight"
-      title="Create Note"
-    >
-    </i>
-  </h4>
-
   <div
     class="offcanvas offcanvas-end"
     tabindex="-1"
@@ -35,9 +23,25 @@
 
 
 <script>
+import { logger } from "../utils/Logger"
+
 export default {
-  setup() {
-    return {}
+  props: {
+    taskData: {
+      type: Object,
+      required: false,
+    }
+  },
+  setup(props) {
+    return {
+      open() {
+        try {
+          logger.log(props.taskData)
+        } catch (error) {
+          logger.error(error.message)
+        }
+      }
+    }
   }
 }
 </script>

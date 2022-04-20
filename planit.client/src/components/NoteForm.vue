@@ -7,7 +7,7 @@
       rounded
       elevation-3
       shadow
-      col-8
+      col-md-8 col-10
       p-2
       m-5
     "

@@ -37,17 +37,43 @@
           class="mdi mdi-message-bulleted selectable"
         ></i> -->
       <!-- </h3> -->
-      <RightOffCanvas :id="'#create-note' + task.id">
-        <template #body> <NoteForm :taskData="task" /> </template>
-        <template #messages> </template>
-      </RightOffCanvas>
-    </div>
-    <div class="row">
-      <div class="col-12" v-for="n in notes" :key="n.id">
-        <Notes :note="n" />
-      </div>
+      <h4>
+        <i
+          class="mdi mdi-message-bulleted selectable"
+          type="button"
+          data-bs-toggle="modal"
+          :data-bs-target="'#create-note' + task.id"
+          aria-controls="offcanvasRight"
+          title="Create Note"
+          @click="open"
+        >
+        </i>
+      </h4>
+      <!-- <RightOffCanvas /> -->
+      <!-- <template #body> <NoteForm :taskData="task" /> </template>
+        <template #messages>
+          <div class="row">
+            <div class="col-12" v-for="n in notes" :key="n.id">
+              <Notes :note="n" />
+            </div>
+          </div>
+        </template> -->
+      <!-- </RightOffCanvas> -->
     </div>
   </div>
+  <Modal :id="'create-note' + task.id">
+    <template #body>
+      <NoteForm :taskData="task" />
+      <div class="row bgpurple rounded">
+        <div class="col-12 p-3" v-for="n in notes" :key="n.id">
+          <Notes :note="n" />
+        </div>
+      </div>
+    </template>
+    <!-- <template #messages>
+      
+    </template> -->
+  </Modal>
 
   <!-- <Modal :id="'create-note' + task.id">
     <template #title> Create Task </template>
@@ -121,5 +147,9 @@ export default {
 
 .textpurple {
   color: #ff48fa;
+}
+
+.bgpurple {
+  background-color: rgb(242, 139, 242);
 }
 </style>
