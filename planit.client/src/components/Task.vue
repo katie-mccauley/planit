@@ -1,5 +1,5 @@
 <template>
-  <div class="form-check mt-3">
+  <div class="form-check mt-3 bglightgrey rounded shadow">
     <input
       class="form-check-input selectable"
       type="checkbox"
@@ -8,29 +8,35 @@
       id="flexCheckDefault"
       title="check task"
     />
-    <label class="form-check-label" for="flexCheckDefault">
+    <!-- <label class="form-check-label" for="flexCheckDefault">
       <h4>{{ task.name }}</h4>
-    </label>
-    <i
-      v-if="account.id == task.creatorId"
-      class="mdi mdi-delete selectable"
-      title="Delete Task"
-      @click="deleteTask"
-    ></i>
-    <i
-      v-if="account.id == task.creatorId"
-      title="Edit Task"
-      class="mdi mdi-pencil selectable"
-      data-bs-toggle="modal"
-      :data-bs-target="'#edit-task' + task.id"
-    ></i>
-    <div>
+    </label> -->
+    <h4>
+      <i class="mdi mdi-weight"></i>{{ task.weight }} {{ task.name }}
       <i
-        title="Create Note"
+        v-if="account.id == task.creatorId"
+        class="mdi mdi-delete selectable text-danger"
+        title="Delete Task"
+        @click="deleteTask"
+      ></i
+      ><i
+        v-if="account.id == task.creatorId"
+        title="Edit Task"
+        class="mdi mdi-pencil textpurple"
         data-bs-toggle="modal"
-        :data-bs-target="'#create-note' + task.id"
-        class="mdi mdi-message selectable"
+        :data-bs-target="'#edit-task' + task.id"
       ></i>
+    </h4>
+
+    <div>
+      <h3>
+        <i
+          title="Create Note"
+          data-bs-toggle="modal"
+          :data-bs-target="'#create-note' + task.id"
+          class="mdi mdi-message-bulleted selectable"
+        ></i>
+      </h3>
     </div>
     <div class="row">
       <div class="col-12" v-for="n in notes" :key="n.id">
@@ -38,7 +44,6 @@
       </div>
     </div>
   </div>
-  <div><i class="mdi mdi-weight"></i> {{ task.weight }}</div>
 
   <Modal :id="'create-note' + task.id">
     <template #title> Create Task </template>
@@ -106,4 +111,11 @@ export default {
 
 
 <style lang="scss" scoped>
+.bglightgrey {
+  background-color: rgb(232, 230, 230);
+}
+
+.textpurple {
+  color: #ff48fa;
+}
 </style>

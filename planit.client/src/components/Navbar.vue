@@ -1,12 +1,12 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary px-3">
+  <nav class="navbar navbar-expand-lg pinkgradient px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <h1 class="text-dark"><i class="mdi mdi-rocket"></i> PlanIt</h1>
+        <h1 class="text-light"><i class="mdi mdi-rocket"></i> PlanIt</h1>
       </div>
     </router-link>
     <button
-      class="navbar-toggler"
+      class="navbar-toggler navbar-light"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarText"
@@ -17,16 +17,16 @@
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <!-- <ul class="navbar-nav me-auto">
-        <li>
+      <ul class="navbar-nav me-auto">
+        <!-- <li>
           <router-link
             :to="{ name: 'About' }"
             class="btn text-success lighten-30 selectable text-uppercase"
           >
             About
           </router-link>
-        </li>
-      </ul> -->
+        </li> -->
+      </ul>
       <span class="navbar-text">
         <button
           class="
@@ -56,7 +56,9 @@
               height="40"
               class="rounded"
             />
-            <span class="mx-3 text-bold text-dark">{{ account.name }}</span>
+            <span class="mx-3 text-bold text-light text-bold">{{
+              account.name
+            }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -114,6 +116,12 @@ export default {
 </script>
 
 <style scoped>
+* {
+  font-family: "Catamaran", sans-serif;
+  font-family: "Comforter", cursive;
+  font-family: "Roboto", sans-serif;
+}
+
 .dropdown-menu {
   user-select: none;
   display: block;
@@ -136,5 +144,12 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.pinkgradient {
+  background-image: linear-gradient(
+    rgba(245, 73, 156, 1),
+    rgba(221, 73, 245, 1)
+  );
 }
 </style>

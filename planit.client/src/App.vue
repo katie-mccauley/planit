@@ -2,7 +2,7 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="bgwhite">
     <router-view />
   </main>
 </template>
@@ -21,4 +21,8 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+
+.bgwhite {
+  background-color: whitesmoke;
+}
 </style>

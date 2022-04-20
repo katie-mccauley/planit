@@ -1,20 +1,22 @@
 <template>
-  <div class="row justify-content-end m-3">
-    <div class="col-md-7 bg-light text-dark">
+  <div class="row justify-content-center m-3">
+    <div
+      class="col-md-8 bg-light text-dark outline rounded shadow pe-1 p-4 pt-1"
+    >
       <div class="row">
-        <div class="col-6">
+        <div class="col-6 mb-2 rounded">
           <h4>
             {{ sprint.name }} <i class="mdi mdi-weight"></i>{{ totalWeight }}
           </h4>
         </div>
         <div class="col-6 d-flex justify-content-end">
-          <h3 v-if="account.id == sprint.creatorId">
-            <i
-              @click="deleteSprint"
-              title="Delete Sprint"
-              class="selectable mdi mdi-alpha-x"
-            ></i>
-          </h3>
+          <button
+            @click="deleteSprint"
+            type="button"
+            title="Delete Sprint"
+            class="btn-close"
+            v-if="account.id == sprint.creatorId"
+          ></button>
         </div>
       </div>
       <div>
@@ -94,4 +96,31 @@ export default {
 
 
 <style lang="scss" scoped>
+.outline {
+  padding: 1rem;
+  padding: 0.5rem 3rem;
+  box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+  border: solid 3px transparent;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(101deg, #78e4ff, #ff48fa);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;
+}
+
+.outlineb {
+  box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+  border-bottom: solid 3px transparent;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(101deg, #78e4ff, #ff48fa);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;
+}
 </style>

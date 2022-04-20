@@ -1,6 +1,6 @@
 <template>
   <button
-    class="btn btn-primary"
+    class="btn btnpurple text-light ps-1 pe-1 pt-1 pb-1 shadow mb-5"
     type="button"
     data-bs-toggle="offcanvas"
     data-bs-target="#offcanvasExample"
@@ -42,11 +42,28 @@
 <script>
 export default {
   setup() {
-    return {}
+    return {
+
+    }
   }
 }
 </script>
 
 
 <style lang="scss" scoped>
+.btnpurple {
+  padding: 1rem;
+  padding: 0.5rem 3rem;
+  box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+  border: solid 3px transparent;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(101deg, #78e4ff, #ff48fa);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;
+  height: 70px;
+}
 </style>
