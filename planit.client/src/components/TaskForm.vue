@@ -1,7 +1,8 @@
 <template>
   <form
     class="
-      bg-grey
+      bg-secondary
+      textpurple
       darken-20
       justify-content-center
       elevation-3
@@ -38,7 +39,7 @@
     </div>
 
     <div class="col-12 d-flex justify-content-end">
-      <button class="btn btn-primary">create task</button>
+      <button class="btn btnpink">create task</button>
     </div>
   </form>
 </template>
@@ -81,4 +82,10 @@ export default {
 
 
 <style lang="scss" scoped>
+.textpurple {
+  color: #ff48fa;
+}
+.btnpink {
+  background-color: rgba(245, 73, 156, 1);
+}
 </style>

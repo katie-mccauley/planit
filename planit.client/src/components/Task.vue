@@ -29,14 +29,18 @@
     </h4>
 
     <div>
-      <h3>
-        <i
+      <!-- <h3> -->
+      <!-- <i
           title="Create Note"
           data-bs-toggle="modal"
           :data-bs-target="'#create-note' + task.id"
           class="mdi mdi-message-bulleted selectable"
-        ></i>
-      </h3>
+        ></i> -->
+      <!-- </h3> -->
+      <RightOffCanvas :id="'#create-note' + task.id">
+        <template #body> <NoteForm :taskData="task" /> </template>
+        <template #messages> </template>
+      </RightOffCanvas>
     </div>
     <div class="row">
       <div class="col-12" v-for="n in notes" :key="n.id">
@@ -45,10 +49,10 @@
     </div>
   </div>
 
-  <Modal :id="'create-note' + task.id">
+  <!-- <Modal :id="'create-note' + task.id">
     <template #title> Create Task </template>
     <template #body><NoteForm :taskData="task" /></template>
-  </Modal>
+  </Modal> -->
   <Modal :id="'edit-task' + task.id">
     <template #title> Edit Task </template>
     <template #body><EditTaskForm :editTask="task" /></template>

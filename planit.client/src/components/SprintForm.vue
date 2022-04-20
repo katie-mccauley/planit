@@ -1,10 +1,11 @@
 <template>
   <form
     class="
-      bg-grey
+      bg-secondary
       darken-20
       justify-content-center
       elevation-3
+      textpurple
       shadow
       col-8
       p-2
@@ -12,7 +13,7 @@
     "
     @submit.prevent="createSprint"
   >
-    <h2>Create Sprint</h2>
+    <h2 class="">Create Sprint</h2>
     <div class="col-md-4 mb-2">
       <label for="" class="form-label">Name: </label>
       <input
@@ -26,7 +27,7 @@
     </div>
 
     <div class="col-12 d-flex justify-content-end">
-      <button class="btn btn-primary">create</button>
+      <button class="btn btnpink">create</button>
     </div>
   </form>
 </template>
@@ -61,4 +62,10 @@ export default {
 
 
 <style lang="scss" scoped>
+.textpurple {
+  color: #ff48fa;
+}
+.btnpink {
+  background-color: rgba(245, 73, 156, 1);
+}
 </style>

@@ -1,9 +1,10 @@
 <template>
   <form
     class="
-      bg-grey
+      bg-light
       darken-20
       justify-content-center
+      rounded
       elevation-3
       shadow
       col-8
@@ -12,7 +13,7 @@
     "
     @submit.prevent="editTask"
   >
-    <h2>{{ editTask.name }}</h2>
+    <h2 class="textpurple">{{ editTask.name }}</h2>
     <div class="dropdown">
       <a
         class="btn btn-secondary dropdown-toggle"
@@ -85,4 +86,7 @@ export default {
 
 
 <style lang="scss" scoped>
+.textpurple {
+  color: #ff48fa;
+}
 </style>
