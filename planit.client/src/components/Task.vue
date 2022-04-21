@@ -65,6 +65,7 @@
     <template #body>
       <NoteForm :taskData="task" />
       <div class="row bgpurple rounded">
+        <h2 class="text-dark">Comments:</h2>
         <div class="col-12 p-3" v-for="n in notes" :key="n.id">
           <Notes :note="n" />
         </div>
